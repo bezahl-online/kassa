@@ -3,6 +3,13 @@ mv index.html index.html.orig
 mv __index.html index.html
 systemctl restart nginx
 systemctl daemon-reload
+useradd -r -G dialout kassa >/dev/null 2>&1
+ZTV_LOG_DIR=/var/log/zvt
+if [ ! -d ${ZTV_LOG_DIR} ]; then
+    mkdir ${ZTV_LOG_DIR}
+fi
+chown kassa /var/log/zvt
+
 systemctl enable gm65
 systemctl enable ptapi
 systemctl enable printapi
