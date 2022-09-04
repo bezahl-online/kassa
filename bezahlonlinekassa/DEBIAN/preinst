@@ -1,5 +1,6 @@
-useradd kassa
-usermod -a -G dialout kassa
-mkdir /var/log/zvt
+ZTV_LOG_DIR=/var/log/zvt
+useradd -r -G dialout kassa >/dev/null 2>&1
+if [ ! -d ${ZTV_LOG_DIR} ]; then
+    mkdir ${ZTV_LOG_DIR}
+fi
 chown kassa /var/log/zvt
-

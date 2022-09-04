@@ -1,9 +1,9 @@
 systemctl stop nginx
-systemctl disable gm65
-systemctl disable ptapi
-systemctl disable printapi
-systemctl disable rfid
 systemctl stop gm65
 systemctl stop ptapi
 systemctl stop printapi
 systemctl stop rfid
+systemctl disable gm65
+systemctl disable ptapi
+systemctl disable printapi
+systemctl disable rfid
