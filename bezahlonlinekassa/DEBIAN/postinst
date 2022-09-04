@@ -1,0 +1,13 @@
+cd /usr/share/nginx/html/
+mv index.html index.html.orig
+mv __index.html index.html
+systemctl restart nginx
+systemctl daemon-reload
+systemctl enable gm65
+systemctl enable ptapi
+systemctl enable printapi
+systemctl enable rfid
+systemctl start gm65
+systemctl start ptapi
+systemctl start printapi
+systemctl start rfid

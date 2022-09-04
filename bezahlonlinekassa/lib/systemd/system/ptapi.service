@@ -1,0 +1,21 @@
+#Put me in /lib/systemd/system/
+[Unit]
+Description=GM65 Barcode Scanner Service
+After=network.target
+
+[Service]
+Environment="PRODUCTIVE=YES"
+Environment="ZVT_URL=pt:20007"
+Environment="ZVT_LOGFILEPATH=/var/log/zvt"
+Environment="ZVT_DUMPFILEPATH=/var/log/zvt/dump"
+
+Type=simple
+User=kassa
+WorkingDirectory=/usr/share/bezahlonline
+ExecStart=/usr/share/bezahlonline/ptapiserver
+Restart=on-failure
+RestartSec=5
+StartLimitAction=reboot
+
+[Install]
+WantedBy=multi-user.target

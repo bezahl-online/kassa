@@ -1,0 +1,20 @@
+#Put me in /lib/systemd/system/
+[Unit]
+Description=RFID Reader Service
+After=network.target
+
+[Service]
+Environment="PRODUCTIVE=YES"
+Environment="RFID_PORT_NAME=/dev/serial/by-id/usb-1a86_USB2.0-Ser_-if00-port0"
+
+
+Type=simple
+User=kassa
+WorkingDirectory=/usr/share/bezahlonline
+ExecStart=/usr/share/bezahlonline/rfidserver
+Restart=on-failure
+RestartSec=5
+StartLimitAction=reboot
+
+[Install]
+WantedBy=multi-user.target

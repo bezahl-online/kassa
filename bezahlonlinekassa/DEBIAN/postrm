@@ -1,0 +1,5 @@
+cd /usr/share/nginx/html/
+mv index.html.orig index.html
+systemctl daemon-reload
+systemctl restart nginx
+userdel kassa

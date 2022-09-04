@@ -1,0 +1,20 @@
+#Put me in /lib/systemd/system/
+[Unit]
+Description=GM65 Barcode Scanner Service
+After=network.target
+
+[Service]
+Environment="PRODUCTIVE=YES"
+Environment="GM65_PORT_NAME=/dev/serial/by-id/usb-USBKey_Chip_USBKey_Module_202730041341-if00"
+
+
+Type=simple
+User=kassa
+WorkingDirectory=/usr/share/bezahlonline
+ExecStart=/usr/share/bezahlonline/gm65server
+Restart=on-failure
+RestartSec=5
+StartLimitAction=reboot
+
+[Install]
+WantedBy=multi-user.target

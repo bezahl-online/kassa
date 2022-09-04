@@ -1,0 +1,5 @@
+useradd kassa
+usermod -a -G dialout kassa
+mkdir /var/log/zvt
+chown kassa /var/log/zvt
+
