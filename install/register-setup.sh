@@ -1,6 +1,7 @@
 #!/bin/sh
 # register setup script
 VERSION="1.2.0"
-wget -o bezahlonlinekassa.deb https://github.com/bezahl-online/kassa.deb/releases/download/v1.2.0/bezahlonlinekassa${VERSION}.deb
+wget https://raw.githubusercontent.com/bezahl-online/kassa/main/install/register-setup.sh
+-o bezahlonlinekassa.deb https://raw.githubusercontent.com/bezahl-online/kassa/bezahlonlinekassa_stable.deb
 sudo apt install nginx
-sudo dpkg -i bezahlonlinekassa.deb
+sudo dpkg -i bezahlonlinekassa_stable.deb
