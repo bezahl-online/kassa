@@ -1,9 +1,11 @@
-cd /usr/share/nginx/html/
-mv index.html index.html.orig
-mv __index.html index.html
+cp /home/kassa/getty@tty1.service /etc/systemd/system/getty.target.wants
+mv /usr/share/nginx/html/index.html /usr/share/nginx/html/index.html.orig
+cp /usr/share/bezahlonline/register/assets /usr/share/nginx/html/
+cp /usr/share/bezahlonline/register/index.html /usr/share/nginx/html/
 systemctl restart nginx
 systemctl daemon-reload
 useradd -r -G dialout kassa >/dev/null 2>&1
+
 ZTV_LOG_DIR=/var/log/zvt
 if [ ! -d ${ZTV_LOG_DIR} ]; then
     mkdir ${ZTV_LOG_DIR}
@@ -18,3 +20,4 @@ systemctl start gm65
 systemctl start ptapi
 systemctl start printapi
 systemctl start rfid
+
