@@ -10,7 +10,8 @@ ZTV_LOG_DIR=/var/log/zvt
 if [ ! -d ${ZTV_LOG_DIR} ]; then
     mkdir ${ZTV_LOG_DIR}
 fi
-chown kassa /var/log/zvt
+chown kassa:kassa /var/log/zvt
+chown -R kassa:kassa /home/kassa
 
 systemctl enable gm65
 systemctl enable ptapi
@@ -20,4 +21,3 @@ systemctl start gm65
 systemctl start ptapi
 systemctl start printapi
 systemctl start rfid
-
