@@ -1,6 +1,6 @@
 cp /home/kassa/getty@tty1.service /etc/systemd/system/getty.target.wants
 mv /usr/share/nginx/html/index.html /usr/share/nginx/html/index.html.orig
-cp /usr/share/bezahlonline/register/html/assets /usr/share/nginx/html/
+cp -r /usr/share/bezahlonline/register/html/assets /usr/share/nginx/html/
 cp /usr/share/bezahlonline/register/html/index.html /usr/share/nginx/html/
 systemctl restart nginx
 systemctl daemon-reload
