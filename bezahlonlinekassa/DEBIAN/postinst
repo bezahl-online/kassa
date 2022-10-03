@@ -2,16 +2,18 @@ cp /home/kassa/getty@tty1.service /etc/systemd/system/getty.target.wants
 mv /usr/share/nginx/html/index.html /usr/share/nginx/html/index.html.orig
 cp -r /usr/share/bezahlonline/register/html/assets /usr/share/nginx/html/
 cp /usr/share/bezahlonline/register/html/index.html /usr/share/nginx/html/
+USER=kassa
 systemctl restart nginx
 systemctl daemon-reload
-useradd -s /bin/bash -r -G dialout kassa >/dev/null 2>&1
+useradd -s /bin/bash -r -G dialout $USER >/dev/null 2>&1
 
 ZTV_LOG_DIR=/var/log/zvt
 if [ ! -d ${ZTV_LOG_DIR} ]; then
     mkdir ${ZTV_LOG_DIR}
 fi
-chown kassa:kassa /var/log/zvt
-chown -R kassa:kassa /home/kassa
+chown $USER:$USER /var/log/zvt
+chown -R $USER:$USER /home/$USER
+cp /home/$USER/getty@tty1.service /etc/systemd/system/getty.target.wants/
 
 systemctl enable gm65
 systemctl enable ptapi
