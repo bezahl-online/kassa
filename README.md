@@ -1,4 +1,4 @@
-# bezahl.online kassa
+bezahl.online Kassa Install Package
 
 Please build following components with CGO_ENABLED=0
     gm65server
