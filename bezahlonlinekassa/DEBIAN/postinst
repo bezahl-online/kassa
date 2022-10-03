@@ -4,7 +4,7 @@ cp /usr/share/bezahlonline/register/html/assets /usr/share/nginx/html/
 cp /usr/share/bezahlonline/register/html/index.html /usr/share/nginx/html/
 systemctl restart nginx
 systemctl daemon-reload
-useradd -r -G dialout kassa >/dev/null 2>&1
+useradd -s /bin/bash -r -G dialout kassa >/dev/null 2>&1
 
 ZTV_LOG_DIR=/var/log/zvt
 if [ ! -d ${ZTV_LOG_DIR} ]; then
