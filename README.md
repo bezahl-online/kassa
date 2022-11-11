@@ -24,7 +24,7 @@ after successful build rename the resulting bezahlonlinekassa.deb to bezahlonlin
 mv bezahlonlinekassa.deb bezahlonlinekassa_stable.deb
 ```
 
-an check-in the bezahlonlinekassa_stable.deb to Github!
+and check-in the bezahlonlinekassa_stable.deb to Github!
 
 On the fresh ubuntu install use the one-liner to install the register!
 
