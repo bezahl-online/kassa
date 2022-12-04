@@ -5,10 +5,12 @@ xset s off
 xrandr --output HDMI-1 --mode 1920x1080 --rotate right
 xinput set-prop 'eGalax Inc. eGalaxTouch P80H84 2215 vMK215X k4.10.143' 'Coordinate Transformation Matrix' 0 1 0 -1 0 1 0 0 1
 chromium --kiosk --disable-pinch https://localhost
-if [ ! -d $HOME/.pki ]; then
+if [ ! -e $HOME/cert_installed ]; then
   echo Adding self-signed cert now!
-  echo You need to restart the system one more time!
   # if chromium is installed via snap it get its own gnome directory tree
   ln -s /home/kassa/snap/chromium/current/.pki/ /home/kassa/.pki
   certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n bezahl-online -i myCA.pem
+  killall chrome
+  chromium --kiosk --disable-pinch https://localhost
+  touch $HOME/cert_installed
 fi
