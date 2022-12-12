@@ -25,5 +25,7 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+echo "waiting for payment terminal to come up"
+sleep 30 # FIXME - could ping pt until it answers
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx  -- -nocursor
     
