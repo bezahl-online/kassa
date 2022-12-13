@@ -7,3 +7,6 @@ systemctl disable gm65
 systemctl disable ptapi
 systemctl disable printapi
 systemctl disable rfid
+
+# stop X server - won't remove it though
+killall Xorg

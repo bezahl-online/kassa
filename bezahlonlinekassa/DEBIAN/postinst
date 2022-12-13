@@ -2,9 +2,12 @@ cp /home/kassa/getty@tty1.service /etc/systemd/system/getty.target.wants
 mv /usr/share/nginx/html/index.html /usr/share/nginx/html/index.html.orig
 cp -r /usr/share/bezahlonline/register/html/assets /usr/share/nginx/html/
 cp /usr/share/bezahlonline/register/html/index.html /usr/share/nginx/html/
-USER=kassa
+
 systemctl restart nginx
 systemctl daemon-reload
+
+# create user 'kassa'
+USER=kassa
 useradd -s /bin/bash -r -G dialout $USER >/dev/null 2>&1
 
 ZTV_LOG_DIR=/var/log/zvt
@@ -14,7 +17,9 @@ fi
 chown $USER:$USER /var/log/zvt
 chown -R $USER:$USER /home/$USER
 cp /home/$USER/getty@tty1.service /etc/systemd/system/getty.target.wants/
-certutil -d sql:/home/$USER/.pki/nssdb -A -t "C,," -n bezahl-online -i /home/$USER/myCA.pem
+
+# won't work
+# certutil -d sql:/home/$USER/.pki/nssdb -A -t "C,," -n bezahl-online -i /home/$USER/myCA.pem
 
 systemctl enable gm65
 systemctl enable ptapi
@@ -24,3 +29,6 @@ systemctl start gm65
 systemctl start ptapi
 systemctl start printapi
 systemctl start rfid
+
+# this should login the kassa and start it up
+systemctl restart getty@tty1 

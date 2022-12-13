@@ -37,7 +37,7 @@ ConditionPathExists=/dev/tty0
 # option to preserve environment (-p), followed by '--' for safety, and then
 # the entered username.
 ExecStart=
-ExecStart=-/sbin/agetty --autologin kassa --noclear %I $TERM
+ExecStart=-/sbin/agetty --autologin kassa %I $TERM
 Type=idle
 Restart=always
 RestartSec=0
