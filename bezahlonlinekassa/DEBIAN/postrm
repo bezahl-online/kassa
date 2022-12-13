@@ -1,7 +1,3 @@
-# remove autologin
-cp /home/kassa/getty@tty1.service_orig /etc/systemd/system/getty.target.wants
-systemctl restart getty@tty1 
-
 # return to initial test site
 cd /usr/share/nginx/html/
 mv index.html.orig index.html
