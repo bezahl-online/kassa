@@ -8,5 +8,9 @@ systemctl disable ptapi
 systemctl disable printapi
 systemctl disable rfid
 
+# remove autologin
+cp /home/kassa/getty@tty1.service_orig /etc/systemd/system/getty.target.wants
+systemctl restart getty@tty1 
+
 # stop X server - won't remove it though
 killall Xorg
