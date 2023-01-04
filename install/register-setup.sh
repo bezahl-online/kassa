@@ -5,7 +5,7 @@ echo "donwloading register package from Github.."
 wget https://raw.githubusercontent.com/bezahl-online/kassa/main/bezahlonlinekassa_stable.deb
 
 echo "installing X server and Nginx.."
-sudo apt install -y --no-install-recommends nginx xserver-xorg x11-xserver-utils xinit xinput openbox libnss3-tools cups-client
+sudo apt install -y --no-install-recommends nginx xserver-xorg x11-xserver-utils xinit xinput openbox libnss3-tools cups cups-client
 
 # chromium browser needed until using tauri version of register
 echo "installing chromium browser.."
