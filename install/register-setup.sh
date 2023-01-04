@@ -20,6 +20,7 @@ sudo lpadmin -d HLL2310D
 lpoptions -d HLL2310D -o PageSize=A4
 lpstat -t
 
+# FIXME: find PT IP and store in /etc/hosts
 
 echo "cleanup.."
 rm bezahlonlinekassa_stable.deb
