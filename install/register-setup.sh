@@ -19,6 +19,11 @@ sudo sh -c "echo $ptaddr pt >>/etc/hosts"
 echo "installing register.."
 sudo dpkg -i bezahlonlinekassa_stable.deb
 
+echo "installig localhost cert.."
+sudo cp /usr/share/bezahlonline/localhost.crt /usr/local/share/ca-certificates/
+sudo update-ca-certificates
+
+
 echo "installing printer driver.."
 sudo dpkg --force-architecture -i /home/kassa/drivers/hll2310dpdrv-4.0.0-1.i386.deb
 sudo lpadmin -d HLL2310D
