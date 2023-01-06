@@ -12,7 +12,9 @@ echo "installing chromium browser.."
 sudo snap install chromium
 
 echo "finding payment terminal.."
-echo $(nmap -p 20007 $(echo $(ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}' | grep -Eo '([0-9]*\.){3}' | grep -v '127.0.0.')0/24) | tr '\n' ' ' | tr 'N' '\n' | grep open | awk '{print $6}' | tr '()' ' ') pt >>/etc/hosts
+network=$(echo $(ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}' | grep -Eo '([0-9]*\.){3}' | grep -v '127.0.0.')0/24)
+ptaddr=$(echo $(nmap -p 20007 $network | tr '\n' ' ' | tr 'N' '\n' | grep open | awk '{print $6}' | tr '()' ' '))
+sudo sh -c "echo $ptaddr pt >>/etc/hosts"
 
 echo "installing register.."
 sudo dpkg -i bezahlonlinekassa_stable.deb
